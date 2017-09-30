@@ -68,9 +68,12 @@ class aliyunall:
 			for page in (1,2,3,4,5):
 				self.get_ecs_info(key,secret,zone,page)
 				self.get_rds_info(key,secret,zone,page)
-		a = "\n".join(self.expire_instance)
-		#self.dd(a)
-		print(a)
+                a = "\n".join(self.expire_instance)
+                if a=='':
+                        a="No ecs or rds expire in {} days".format(day)
+                print(a)
+                self.dd(a)
+
 
 if __name__ == '__main__':
 	a=aliyunall()
